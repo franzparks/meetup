@@ -1,0 +1,47 @@
+'use strict';
+
+/**
+ * @ngdoc overview
+ * @name meetupApp
+ * @description
+ * # meetupApp
+ *
+ * Main module of the application.
+ */
+angular
+  .module('meetupApp', [
+    'ngAnimate',
+    'ngAria',
+    'ngCookies',
+    'ngMessages',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/create', {
+        templateUrl: 'views/create.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'register'
+      })
+      .when('/login', {
+        templateUrl: 'views/about.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
