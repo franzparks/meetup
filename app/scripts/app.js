@@ -28,9 +28,9 @@ angular
         controllerAs: 'main'
       })
       .when('/create', {
-        templateUrl: 'views/create.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/createEvent.html',
+        controller: 'createEventCtrl',
+        controllerAs: 'create'
       })
       .when('/register', {
         templateUrl: 'views/register.html',

@@ -1,0 +1,64 @@
+
+
+
+<div class="display-section" ng-controller="createEventCtrl">
+      <h2>Create Event</h2>
+
+      <form class="form-signin" name="eForm" novalidate ng-class="showValidation ? 'validate' : ''">
+
+      <div class="form-group" ng-class="{ 'has-error' : eForm.ename.$invalid }">	
+       <label for="event-name"><span class="sr-only">Event Name</span> 
+        <input class="full" id="event-name" name="ename" type="text" placeholder="Event Name" ng-model="event.name" required>
+        <p  class="help-block" ng-show="eForm.ehost.$error.required && eForm.ename.$touched">Please enter a meeting name</p>
+      </label>
+      </div>
+
+
+      <label for="event-type"><span class="sr-only">Event Type</span>
+        <input class="full" id="event-type" list="event" type="text" placeholder="Event Type">
+       </label>
+        <datalist id="event" name="event">
+        	<option value="Birthday Party">
+        	<option value="Wedding">
+        	<option value="Conference Talk">
+            <option value="Tech Talk">
+            <option value="Scuba Diving">		
+        </datalist>	
+      
+     <div class="form-group" ng-class="{ 'has-error' : eForm.ehost.$invalid }">	
+      <label for="event-host"><span class="sr-only">Event Host</span>
+        <input class="full" id="event-host" type="text" placeholder="Event Host" name="ehost" ng-model="event.host" required>
+        <p  class="help-block" ng-show="eForm.ehost.$error.required && eForm.ehost.$touched">Please enter host name</p>
+      </label>
+     </div>
+
+      <div class="form-group" ng-class="{ 'has-error' : eForm.estart.$invalid }">	
+      <label for="start-date"><span class="sr-only">Start Date And Time</span>
+        <input class="full" id="start-date" type="datetime-local" placeholder="Start Date And Time" name="estart" ng-model="event.start" required>
+        <p  class="help-block" ng-show="eForm.estart.$error.required && eForm.estart.$touched">Please meeting start date and time</p>
+      </label>
+      </div>
+
+     <div class="form-group" ng-class="{ 'has-error' : eForm.end.$invalid }">	
+      <label for="end-date"><span class="sr-only">End Date And Time</span>
+        <input class="full" id="end-date" type="datetime-local" placeholder="End Date And Time" name="end" ng-model="event.end" required>
+         <p  class="help-block" ng-show="eForm.end.$error.required && eForm.end.$touched">Please add meeting end date and time</p>
+      </label>
+  </div>
+
+      <label for="location"><span class="sr-only">Location</span>
+        <input class="full" id="location" type="text" placeholder="Location">
+      </label>
+
+      <label for="additional-message"><span>Any Additional Message To Attendees?</span>
+        <input id="additional-message" type="checkbox" ng-model="message">
+      </label>
+
+      <label for="message"><span class="sr-only">Message To Attendees</span>
+        <input class="full" id="message" type="text" placeholder="Message" max="50" ng-show="additionalMessage()">
+      </label>
+
+      <input type="button" value="Create Event" class="btn btn-primary" ng-disabled="!event.name " ng-submit="createEvent()"/>
+
+      </form>
+    </div>  
