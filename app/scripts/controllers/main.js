@@ -8,8 +8,9 @@
  * Controller of the meetupApp
  */
 angular.module('meetupApp')
-  .controller('MainCtrl', function ($scope,$location) {
-
+  .controller('MainCtrl', function ($scope,$location,UserDataService) {
+    $scope.username = UserDataService.getUser();
+    
     $scope.events = [
     {"name": "Tech in 2016", "location" : "Santa Clara"},
     {"name": "Tech in 2016", "location" : "Santa Clara"}
