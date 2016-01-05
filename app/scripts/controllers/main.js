@@ -6,49 +6,33 @@
  * @description
  * # MainCtrl
  * Controller of the meetupApp
+ --for formatting date and time
+     Date: {{event.start | date: "MM/dd/yyyy"}}
+      Time: {{event.start | date: "hh:mm a"}}
  */
 angular.module('meetupApp')
 
   .controller('MainCtrl', function ($scope,$location,UserDataService) {
     $scope.username = UserDataService.getUser();
-
-    $scope.events = [
-    {"name": "Tech in 2016", "location" : "Santa Clara"},
-    {"name": "Tech in 2016", "location" : "Santa Clara"}
-    
-    ];
-
-    $scope.create = function(){
-    	$scope.events.push({"name" : $scope.name, "location" : $scope.location});
-    	$location.path('/');
-    	//$scope.name = '';
-    	//$scope.location = '';
-    };
-  })
-
-  .controller('createEventCtrl', function ($scope,$location,UserDataService) {
+})
+  .controller('createEventCtrl', function ($scope,$location,$filter, UserDataService) {
    
-   $scope.message = false;
+   $scope.hasAdditionalMsg = false;
+   $scope.events = [];
+   $scope.event = {};
+  
 
-   $scope.additionalMessage = function(){
-      return $scope.message;
+   $scope.getAdditionalMessage = function(){
+      return $scope.hasAdditionalMsg;
    };
 
-   $scope.createEvent = function (eventDetails) {
-        if (eForm.$valid) {
-        $scope.event = eventDetails.name
-                            + " (" + eventDetails.host + ") ("
-                            + eventDetails.start+ ")";
-        } else {
-                $scope.showValidation = true;
-        } 
+   $scope.createEvent = function (event) {
+
+        $scope.events.push(event);
+
+        $location.path('/');
     };
 
-    $scope.getError = function (error) {
-            if (angular.isDefined(error)) {
-                if (error.required) {
-                    return "Please enter a value";
-                } 
-            }
-    };
+
+  
 });
