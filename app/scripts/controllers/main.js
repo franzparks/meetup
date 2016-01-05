@@ -12,13 +12,13 @@
  */
 angular.module('meetupApp')
 
-  .controller('MainCtrl', function ($scope,$location,UserDataService) {
+  .controller('MainCtrl', function ($scope,UserDataService) {
     $scope.username = UserDataService.getUser();
 })
-  .controller('CreateEventCtrl', function ($scope,$location,$filter, UserDataService,$firebaseArray) {
+  .controller('CreateEventCtrl', function ($scope,$location,$filter, UserDataService) {
    
    $scope.hasAdditionalMsg = false;
-   //$scope.events = []; Now using firebase to store events
+   //$scope.events = []; //Now using firebase to store events
    $scope.event = {
      emailId : UserDataService.getUser()
    };
@@ -29,17 +29,31 @@ angular.module('meetupApp')
    };
 
    $scope.createEvent = function (event) {
-
+      // Get a database reference to the events
        var ref = new Firebase('https://franzmeetapp.firebaseio.com/events');
 
-        ref.set(event, function(error) {
-            if (error) {
-               console.log("Error:", error);
-            }else{
-             $location.path('/');
-            }
-        });
+        ref.push(event);
+        //redirect to home page
+        $location.path('/');
  
     }
   
+})
+
+.controller('GetEventsCtrl', function ($scope,$filter, UserDataService,$firebaseArray) {
+
+   $scope.events = []; 
+   
+  // Get a database reference to the events
+var ref = new Firebase("https://franzmeetapp.firebaseio.com/events");
+// Attach an asynchronous callback to read the data at the events reference
+ref.on("value", function(snapshot) {
+  var data =   snapshot.val();
+  console.log(data);
+  $scope.events = data;
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
 });
+  
+});
+

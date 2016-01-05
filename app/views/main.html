@@ -1,21 +1,30 @@
 <div class="container" >
-  <h3>Meetup App For Your Meetup Needs</h3>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure managing your events.
-  </p>
-  <p class="lead">Welcome home <b>{{username}}</b>!!</p>
-  <p><a class="btn btn btn-success" ng-href="#/create">Create Event!<span></span></a></p>
+  <h3 class="">Welcome To Meetup!</h3>
+  
+<div class="row marketing clearfix " ng-controller="GetEventsCtrl">
+ 
+
+<table class="table table-striped">
+  <caption>Upcoming Events</caption>
+<thead>
+
+</thead>
+<tbody>
+  <tr>
+   <th>Name</th> <th>Type</th> <th>Location</th> <th>Host</th> <th>Start Date & Time</th>
+   <th>End Date & Time</th> <th>Additional Information</th>
+</tr>
+ <tr ng-repeat="event in events">
+  <td>{{event.name}}</td>
+  <td>{{event.type || 'Meeting'}}</td>
+  <td>{{event.location || 'Not Yet Decided'}}</td>
+  <td>{{event.host}}</td>
+  <td>{{event.start || 'Not Yet Decided'}}</td>
+  <td>{{event.end || 'Not Yet Decided'}}</td>
+  <td>{{event.additionalMsg || 'None'}}</td>
+</tr>
+</tbody>
+</table>
 </div>
 
-<div class="row marketing clearfix">
-
-<div ng-repeat="event in events" class="col-xs-6 col-md-3 thumbnail ">
-  <h4>{{event.name}}</h4>
-  <p> <h6> Location: {{event.location}}</h6></p>
-    <p>
-    
-    </p>
 </div>
-
-
