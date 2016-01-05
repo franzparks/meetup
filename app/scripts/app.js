@@ -29,7 +29,7 @@ angular
       })
       .when('/create', {
         templateUrl: 'views/createEvent.html',
-        controller: 'createEventCtrl',
+        controller: 'CreateEventCtrl',
         controllerAs: 'create'
       })
       .when('/register', {

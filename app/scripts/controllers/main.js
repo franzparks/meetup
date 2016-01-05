@@ -15,11 +15,13 @@ angular.module('meetupApp')
   .controller('MainCtrl', function ($scope,$location,UserDataService) {
     $scope.username = UserDataService.getUser();
 })
-  .controller('createEventCtrl', function ($scope,$location,$filter, UserDataService) {
+  .controller('CreateEventCtrl', function ($scope,$location,$filter, UserDataService,$firebaseArray) {
    
    $scope.hasAdditionalMsg = false;
-   $scope.events = [];
-   $scope.event = {};
+   //$scope.events = []; Now using firebase to store events
+   $scope.event = {
+     emailId : UserDataService.getUser()
+   };
   
 
    $scope.getAdditionalMessage = function(){
@@ -28,11 +30,16 @@ angular.module('meetupApp')
 
    $scope.createEvent = function (event) {
 
-        $scope.events.push(event);
+       var ref = new Firebase('https://franzmeetapp.firebaseio.com/events');
 
-        $location.path('/');
-    };
-
-
+        ref.set(event, function(error) {
+            if (error) {
+               console.log("Error:", error);
+            }else{
+             $location.path('/');
+            }
+        });
+ 
+    }
   
 });
