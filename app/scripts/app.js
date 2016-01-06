@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'firebase'
+    'firebase',
+    'chieffancypants.loadingBar'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -39,6 +40,11 @@ angular
       })
       .when('/login', {
         templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .when('/loggedout', {
+        templateUrl: 'views/loggedout.html',
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })

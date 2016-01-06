@@ -4,7 +4,7 @@
 <div class="display-section" ng-controller="CreateEventCtrl">
       <h2>Create Event</h2>
 
-      <form class="form-signin" name="eForm" role="form" novalidate >
+      <form class="form-signin" name="eForm" role="form" autocomplete="on" novalidate >
 
       <div class="form-group" ng-class="{ 'has-error' : eForm.ename.$invalid && eForm.ename.$touched}">	
        <label for="event-name"><span class="sr-only">Event Name</span> 

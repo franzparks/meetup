@@ -81,3 +81,33 @@ body {
     border-bottom: 0;
   }
 }
+
+
+.meetup-nav .active {
+  color: #fff;
+}
+
+/*
+ * Masthead for nav
+ */
+
+.meetup-masthead {
+  background-color: #428bca;
+  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+          box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+}
+
+
+/* Nav links */
+.meetup-nav-item {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  font-weight: 500;
+  color: #cdddeb;
+}
+.meetup-nav-item:hover,
+.meetup-nav-item:focus {
+  color: #fff;
+  text-decoration: none;
+}

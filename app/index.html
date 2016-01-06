@@ -9,13 +9,15 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    
  
   </head>
   <body ng-controller="MainCtrl">
@@ -25,40 +27,41 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+      <div class="" role="navigation">
         <div class="container">
-          <div class="navbar-header">
+          <div class="navbar-header navbar-default meetup-masthead">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+            <button type="button" class="navbar-toggle  collapsed " data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">Meetup-App</a>
+            <a class="meetup-nav-item" href="#/">Meetup-App</a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div class="collapse navbar-collapse meetup-masthead" id="js-navbar-collapse">
+              <a class="meetup-nav-item active" href="#/">Home</a>
+              <a  ng-show="isLoggedIn()" class="meetup-nav-item" ng-href="#/create">Create Event</a>
+              <a  ng-show="!isLoggedIn()" class="meetup-nav-item navbar-right" ng-href="#/login">Login</a>
+              <a  ng-show="!isLoggedIn()" class="meetup-nav-item navbar-right" ng-href="#/register">Register</a>
+              <a  ng-show="isLoggedIn()" class="meetup-nav-item navbar-right" ng-click="logout()">Logout</a>
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/create">Create Meeting</a></li>
-              <li><a ng-href="#/register">Register</a></li>
-              <li><a ng-href="#/login">Login</a></li>
-            </ul>
+           
           </div>
         </div>
       </div>
     </div>
 
     <div class="container">
+      
     <div ng-view></div>
     </div>
 
     <div class="footer">
-      <div class="container">
-        <p>From Franz With <span class="glyphicon glyphicon-heart"></span></p>
+      <div class="container" text-align="center">
+        <p>© 2016 Francis Phiri</p>
       </div>
     </div>
 
@@ -87,6 +90,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
    <!--dev sources-->
@@ -102,6 +106,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        
         <!-- endbuild -->
 
 </body>

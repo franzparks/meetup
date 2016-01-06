@@ -12,8 +12,22 @@
  */
 angular.module('meetupApp')
 
-  .controller('MainCtrl', function ($scope,UserDataService) {
+
+  .controller('MainCtrl', function ($scope,UserDataService,$location) {
+
     $scope.username = UserDataService.getUser();
+
+    $scope.login = {};
+   
+    $scope.isLoggedIn = function(){
+        return UserDataService.getUser().length > 0;
+    };
+
+
+    $scope.logout = function(){
+      UserDataService.logoutUser();
+    };
+
 })
   .controller('CreateEventCtrl', function ($scope,$location,$filter, UserDataService) {
    
@@ -31,6 +45,19 @@ angular.module('meetupApp')
    $scope.createEvent = function (event) {
       // Get a database reference to the events
        var ref = new Firebase('https://franzmeetapp.firebaseio.com/events');
+        
+        if (angular.isDefined($scope.event.start)) {
+            var startDate = $scope.event.start;
+            $scope.event.start = startDate.getTime();
+            console.log(startDate.getTime());
+        }
+
+        if (angular.isDefined($scope.event.end)) {
+            var endDate = $scope.event.end;
+            $scope.event.end = endDate.getTime();
+        }
+
+
 
         ref.push(event);
         //redirect to home page
