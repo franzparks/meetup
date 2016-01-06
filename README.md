@@ -1,12 +1,18 @@
-# meetup project
+# Meetup Project
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.12.1.
 
-## Build & development
+### Run the Application
 
-Run `grunt` for building and `grunt serve` for preview.
+To run the app after downloading the source code :
 
-## Testing
+```
+run npm install followed by bower install in the meetup directory.
+Then `run grunt serve`.
+Now browse to the app at `http://localhost:9000/`.
 
-Running `grunt test` will run the unit tests with karma.
+```
+
+## Requirements
+
