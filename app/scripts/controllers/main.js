@@ -3,12 +3,15 @@
 /**
  * @ngdoc function
  * @name meetupApp.controller:MainCtrl
+ * @name meetupApp.controller:CreateEventCtrl
+ * @name meetupApp.controller:GetEventsCtrl
  * @description
  * # MainCtrl
+ * # CreateEventCtrl
+ * # GetEventsCtrl
+ 
  * Controller of the meetupApp
- --for formatting date and time
-     Date: {{event.start | date: "MM/dd/yyyy"}}
-      Time: {{event.start | date: "hh:mm a"}}
+ 
  */
 angular.module('meetupApp')
 
@@ -57,10 +60,8 @@ angular.module('meetupApp')
             $scope.event.end = endDate.getTime();
         }
 
-
-
         ref.push(event);
-        //redirect to home page
+        //redirect to home page after push
         $location.path('/');
  
     }

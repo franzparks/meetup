@@ -8,14 +8,14 @@
 
       <div class="form-group" ng-class="{ 'has-error' : eForm.ename.$invalid && eForm.ename.$touched}">	
        <label for="event-name"><span class="sr-only">Event Name</span> 
-        <input class="form-control" id="event-name" name="ename" type="text" placeholder="Event Name" ng-model="event.name" required>
+        <input class="form-control" id="event-name" name="ename" type="text" placeholder="Event Name" ng-model="event.name" required autocomplete="name" autofocus>
         <p  class="help-block" ng-show="eForm.ename.$error.required &&  eForm.ename.$touched">Please enter a meeting name</p>
 
       </label>
  </div>
 
       <label for="event-type"><span class="sr-only">Event Type</span>
-        <input class="form-control" id="event-type" list="event" type="text" placeholder="Event Type" ng-model="event.type">
+        <input class="form-control" id="event-type" list="event" type="text" placeholder="Event Type" ng-model="event.type" autocomplete="name">
        </label>
         <datalist id="event" name="event">
         	<option value="Birthday Party">
@@ -27,13 +27,14 @@
       
      
       <label for="event-host"><span class="sr-only">Event Host</span>
-        <input class="form-control" id="event-host" type="text" placeholder="Event Host" name="ehost" ng-model="event.host">
+        <input class="form-control" id="event-host" type="text" placeholder="Event Host" name="ehost" ng-model="event.host" autocomplete="name">
       </label>
      
 
       <div class="form-group" ng-class="{ 'has-error' : eForm.estart.$invalid && eForm.estart.$touched}">	
       <label for="start-date"><span class="sr-only">Start Date And Time</span>
         <input class="form-control" id="start-date" type="datetime-local" placeholder="mm/dd/yyyy, --:-- --" name="estart" ng-model="event.start" required>
+        {{event.start}}
         <p  class="help-block" ng-show="eForm.estart.$error.required && eForm.estart.$touched">Please add meeting start date</p>
       </label>
       </div>
@@ -47,7 +48,8 @@
 
     
       <label for="location"><span class="sr-only">Location</span>
-        <input class="form-control" id="location" type="text" placeholder="Location" ng-model="event.location">
+        <input class="form-control" id="location" type="text" placeholder="123 Any Street" ng-model="event.location"
+        autocomplete="shipping street-address" >
       </label>
 
       <label for="additional-message"><span>Any Additional Message To Attendees?</span>
@@ -55,7 +57,7 @@
       </label>
 
       <label for="message"><span class="sr-only">Message To Attendees</span>
-        <input class="form-control" id="message" type="text" placeholder="Message" max="50" ng-model="event.additionalMsg" ng-show="getAdditionalMessage()">
+        <input class="form-control" id="message" type="text" placeholder="Come prepared!" max="50" ng-model="event.additionalMsg" ng-show="getAdditionalMessage()">
       </label>
 
       <input type="button" value="Create Event" class="btn btn-primary" ng-disabled="!event.name " ng-click="createEvent(event)"/>
