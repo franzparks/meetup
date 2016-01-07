@@ -31,7 +31,6 @@
     "time-grunt": "^1.0.0",
     "karma": "^0.9",
     "phantomjs": "^1.9",
-    "jasminecore" :"*",
     "karma":"^0.13.0"
   },
   "engines": {

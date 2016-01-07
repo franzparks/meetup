@@ -10,8 +10,12 @@ version 0.12.1.
 To run the app after downloading the source code :
 
 ```
-Run npm install followed by bower install in the meetup directory.
-Then run grunt serve.
+1. If you don't have it already, install the Yeoman toolset:
+npm install --global yo bower grunt-cli
+
+2. Run npm install followed by bower install in the meetup directory.
+3. Run grunt serve.
+
 Browse the app at http://localhost:9000/
 
 To build for production:
