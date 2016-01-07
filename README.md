@@ -95,7 +95,7 @@ I decided not to add an option for adding a guest list in this form because I th
 
 [login]: http://stackoverflow.com/questions/27389157/firebaseauth-with-angular-user-login
 
-[passord]: https://www.firebase.com/docs/web/guide/login/password.html
+[password]: https://www.firebase.com/docs/web/guide/login/password.html
 
 [date]: https://docs.angularjs.org/api/ng/filter/date
 
