@@ -76,6 +76,7 @@ No other fields have been added to keep the form and the registration process si
 
 - Additional Message  (An optional field for the event creator to add any additional information for the event).
 
+I decided not to add an option for adding a guest list in this form because I think it would be better to have that functionality in a different feature where users are allowed to select an event to attend and then get added to that event by their own request
 
 #### 3. The app should display events that have been created.
 
