@@ -1,5 +1,5 @@
 # Meetup Project
-This project to demonstrate the design of high conversion forms. AngulaJS framework has been used to build the application on the user interface and Firebase has been used to store user and event information
+This project for demonstrating the design of high conversion forms. AngulaJS framework has been used to build the application on the user interface and Firebase has been used to store user and event information on the backend
 
 Initial project files generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.12.1.
@@ -9,9 +9,9 @@ version 0.12.1.
 To run the app after downloading the source code :
 
 ```
-run npm install followed by bower install in the meetup directory.
+Run npm install followed by bower install in the meetup directory.
 Then run grunt serve.
-Browse to the app at http://localhost:9000/.
+Browse the app at http://localhost:9000/
 
 To build for production:
 run grunt
@@ -28,7 +28,7 @@ app/                    --> all of the source files for the application
     app.js              --> main application module
   index.html            --> app layout file (the main html template file of the app)
   scripts/              --> all app specific styling sheets
-  views/              --> all app view templates
+  views/                --> all app view templates
     createEvent.html/         --> partial template with form for creating events
     loggedout.html            --> partial template to display when user is logged out of app
     login.html/               --> partial template with form for getting user input to log into app
@@ -39,7 +39,7 @@ app/                    --> all of the source files for the application
 
 ## Requirements
 
-### 1.) Registration form for user account creation:
+### 1. Registration form for user account creation:
 
 #### The user account creation form includes the following fields:
 
@@ -57,7 +57,7 @@ No other fields have been added to keep the form and the registration process si
 
 - Password 
 
-### 2.) Event creation form:
+### 2. Event creation form:
 
 #### The event creation form includes the following fields:
 
@@ -76,12 +76,10 @@ No other fields have been added to keep the form and the registration process si
 - Additional Message  (An optional field for the event creator to add any additional information for the event).
 
 
-### 3.) The app should display events that have been created.
+### 3. The app should display events that have been created.
 
-- Created events are displayed on the landing page
+- Created events are displayed on the landing page in a table for simplicity
 
-
-### Sources
 
 [git]: http://git-scm.com/
 [bower]: http://bower.io
@@ -92,3 +90,17 @@ No other fields have been added to keep the form and the registration process si
 [karma]: http://karma-runner.github.io
 [travis]: https://travis-ci.org/
 [http-server]: https://github.com/nodeapps/http-server
+
+[login]: http://stackoverflow.com/questions/27389157/firebaseauth-with-angular-user-login
+
+[passord]: https://www.firebase.com/docs/web/guide/login/password.html
+
+[date]: https://docs.angularjs.org/api/ng/filter/date
+
+[filtering]: http://stackoverflow.com/questions/16523076/angular-template-default-value-if-binding-null-undefined-with-filter
+
+[dates]: http://stackoverflow.com/questions/30021133/how-do-you-save-a-date-field-in-firebase-using-angularfire
+
+[autofill]: https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill?hl=en
+
+[loading-ind]: https://github.com/gdi2290/angular-loading-bar

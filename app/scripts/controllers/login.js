@@ -66,7 +66,7 @@ angular.module('meetupApp')
     var ref = new Firebase('https://franzmeetapp.firebaseio.com');
     var auth = $firebaseAuth(ref);
 
-    $scope.regError = false;
+    $scope.regError = false; //for filtering on view
 
     $scope.getRegError = function(){
      return $scope.regError;
@@ -99,7 +99,7 @@ angular.module('meetupApp')
                     });
             }
         }
-   };
+   }; //sign up
     
   });
 

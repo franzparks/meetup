@@ -44,7 +44,7 @@ angular
         controllerAs: 'login'
       })
       .when('/loggedout', {
-        templateUrl: 'views/loggedout.html',
+        templateUrl: 'views/loggedOut.html',
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
