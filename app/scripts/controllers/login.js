@@ -47,7 +47,7 @@ angular.module('meetupApp')
             email: $scope.user.email,
             password: $scope.user.password
 
-        }).then(function() {
+        }).then(function(authData) {
     
             console.log("Successfully logged in!")
             UserDataService.setUser($scope.user.email);
@@ -74,6 +74,8 @@ angular.module('meetupApp')
 
     $scope.signUp = function() {
       if (!$scope.regForm.$invalid) {
+
+           var name = $scope.user.name;
             var email = $scope.user.email;
             var password = $scope.user.password;
 
@@ -85,6 +87,7 @@ angular.module('meetupApp')
             if (email && password) {
                 $scope.oldEmail = email;
                 auth.$createUser({
+                    name : name,
                     email : email, 
                     password: password
 

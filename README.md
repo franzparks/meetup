@@ -43,7 +43,7 @@ app/                    --> all of the source files for the application
 
 #### The user account creation form includes the following fields:
 
-- Name (An optional field for displaying the user's name on the landing page).
+- Name (An optional field).
 
 - Email address (A required field in order to allow the user to login in)
 
