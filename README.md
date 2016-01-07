@@ -1,6 +1,6 @@
 # Meetup Project
 
-This project for demonstrating the design of high conversion forms. AngulaJS framework has been used to build the application on the user interface and Firebase has been used to store user and event information on the backend
+This is a project for demonstrating the design of high conversion web forms. AngulaJS framework has been used to build the application on the user interface and Firebase has been used to store user and event information on the backend
 
 Initial project files generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.12.1.
@@ -40,7 +40,7 @@ app/                    --> all of the source files for the application
 
 ### Requirements
 
-#### 1. Registration form for user account creation:
+#### 1. User Account Creation:
 
 ##### The user account creation form includes the following fields:
 
@@ -58,7 +58,7 @@ No other fields have been added to keep the form and the registration process si
 
 - Password 
 
-#### 2. Event creation form:
+#### 2. Event Creation:
 
 ##### The event creation form includes the following fields:
 
@@ -78,7 +78,7 @@ No other fields have been added to keep the form and the registration process si
 
 I decided not to add an option for adding a guest list in this form because I think it would be better to have that functionality in a different feature where users are allowed to select an event to attend and then get added to that event by their own request
 
-#### 3. The app should display events that have been created.
+#### 3. Events Display.
 
 - Created events are displayed on the landing page in a table for simplicity
 
