@@ -9,22 +9,22 @@ version 0.12.1.
 
 To run the app after downloading the source code :
 
-```
-1. If you don't have it already, install the Yeoman toolset:
-npm install --global yo bower grunt-cli
 
-2. Run npm install followed by bower install in the meetup directory.
-3. Run grunt serve.
+1. If you don't have it already, install the Yeoman toolset:
+`npm install --global yo bower grunt-cli`
+
+2. Run `npm install` followed by `bower install` in the meetup directory.
+3. Run `grunt serve`
 
 Browse the app at http://localhost:9000/
 
 To build for production:
-run grunt
-```
+Run `run grunt`
+
 
 ### Project Directory Layout
 
-```
+
 app/                    --> all of the source files for the application
   scripts/              --> all app specific modules
     controllers/              --> app controllers
@@ -40,7 +40,7 @@ app/                    --> all of the source files for the application
     main.html/                --> partial template for displaying upcoming events and serves as landing page
     register.html/            --> partial template with form for getting user input to register users
 
-```
+
 
 ### Requirements
 
