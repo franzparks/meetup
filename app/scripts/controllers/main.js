@@ -22,7 +22,7 @@ angular.module('meetupApp')
 
     $scope.login = {};
    
-    $scope.isLoggedIn = function(){
+    $scope.isLoggedIn = function(){ 
         return UserDataService.getUser().length > 0;
     };
 
@@ -32,7 +32,7 @@ angular.module('meetupApp')
     };
 
 })
-  .controller('CreateEventCtrl', function ($scope,$location,$filter, UserDataService) {
+  .controller('CreateEventCtrl', function ($scope,$location,$filter,UserDataService) {
    
    $scope.hasAdditionalMsg = false;
    //$scope.events = []; //Now using firebase to store events

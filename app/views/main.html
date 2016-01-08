@@ -1,9 +1,10 @@
 <div class="" >
-  <h3 class="">Welcome to meetup <span class="text-success">{{username}} </span>!</h3>
+  <h3 class="">Welcome to meetup <span class="text-success">{{auth.email}} </span>!</h3>
   
 
 <div class="row marketing clearfix " ng-controller="GetEventsCtrl">
  <div class="alert alert-info" ng-show="!isLoggedIn()">Log in to create events!</div>
+ {{users}}
 <div class="table-responsive">
 <table class="table table-striped table-hover">
   <caption>Upcoming Events</caption>

@@ -8,11 +8,17 @@
  * Controller of the meetupApp
  */
 angular.module('meetupApp')
-.service('UserDataService', function($firebaseAuth,$location) { //for passing user info between controllers
-    var user = '';
-    var ref = new Firebase("https://franzmeetapp.firebaseio.com");
-    var loginObj = $firebaseAuth(ref);
 
+.factory("Auth", ["$firebaseAuth",
+  function($firebaseAuth) {
+    var ref = new Firebase("https://franzmeetapp.firebaseio.com");
+    return $firebaseAuth(ref);
+  }
+])
+
+.service('UserDataService', function( Auth,$location) { //for passing user info between controllers
+    var user = '';
+    
     return {
 
         getUser : function() {
@@ -23,7 +29,7 @@ angular.module('meetupApp')
         },
 
         logoutUser: function(){
-            loginObj.$unauth();
+            Auth.$unauth();
             user = ''; //to make sure views get empty value for user
             console.log('Successfully logged out!');
             $location.path('/loggedout');
@@ -31,10 +37,8 @@ angular.module('meetupApp')
     };
 })
 
-  .controller('LoginCtrl', function ($scope,$location, $firebaseAuth, UserDataService) {
-   var ref = new Firebase('https://franzmeetapp.firebaseio.com');
-    var log = $firebaseAuth(ref);
-
+  .controller('LoginCtrl', function ($scope,$location, Auth, UserDataService) {
+   
     $scope.loginError = false;
 
     $scope.getLoginError = function(){
@@ -43,14 +47,14 @@ angular.module('meetupApp')
  
     $scope.login = function() {
 
-        log.$authWithPassword({
+        Auth.$authWithPassword({
             email: $scope.user.email,
             password: $scope.user.password
 
         }).then(function(authData) {
     
-            console.log("Successfully logged in!")
-            UserDataService.setUser($scope.user.email);
+            console.log("Successfully logged in!", authData)
+            UserDataService.setUser(authData.password.email);
             $location.path('#/');
         }, function(err) {
             $scope.loginError = true;
@@ -62,15 +66,20 @@ angular.module('meetupApp')
 
   })
 
-  .controller('RegisterCtrl', function ($scope,$location, $firebaseAuth) {
-    var ref = new Firebase('https://franzmeetapp.firebaseio.com');
-    var auth = $firebaseAuth(ref);
-
+  .controller('RegisterCtrl', function ($scope,$location, Auth) {
+    
     $scope.regError = false; //for filtering on view
 
     $scope.getRegError = function(){
      return $scope.regError;
     };
+
+    $scope.auth = Auth;
+
+    // any time auth status updates, add the user data to scope
+    $scope.auth.$onAuth(function(authData) {
+      $scope.authData = authData;
+    });
 
     $scope.signUp = function() {
       if (!$scope.regForm.$invalid) {
@@ -86,7 +95,7 @@ angular.module('meetupApp')
 
             if (email && password) {
                 $scope.oldEmail = email;
-                auth.$createUser({
+                $scope.auth.$createUser({
                     name : name,
                     email : email, 
                     password: password

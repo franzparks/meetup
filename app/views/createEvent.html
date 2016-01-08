@@ -37,7 +37,7 @@
       <div class="form-group" ng-class="{ 'has-error' : eForm.estart.$invalid && eForm.estart.$touched}">	
       <label for="start-date"><span class="sr-only">Start Date And Time</span>
         <input class="form-control" id="start-date" type="datetime-local" placeholder="mm/dd/yyyy, --:-- --" name="estart" ng-model="event.start" required>
-        {{event.start}}
+        
         <p  class="help-block" ng-show="eForm.estart.$error.required && eForm.estart.$touched">Please add meeting start date</p>
       </label>
       </div>
