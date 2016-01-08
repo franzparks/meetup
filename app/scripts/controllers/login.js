@@ -70,23 +70,32 @@ angular.module('meetupApp')
     
     $scope.regError = false; //for filtering on view
 
+    $scope.auth = Auth;
+
+    $scope.moreInfo = false;
+
     $scope.getRegError = function(){
      return $scope.regError;
     };
 
-    $scope.auth = Auth;
+    $scope.getMoreInfo = function(){
+     return $scope.moreInfo;
+    };
 
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
     });
+    
 
     $scope.signUp = function() {
       if (!$scope.regForm.$invalid) {
 
-           var name = $scope.user.name;
+            var name = $scope.user.name;
             var email = $scope.user.email;
             var password = $scope.user.password;
+            var employer = $scope.user.employer;
+            var title = $scope.user.title;
 
             $scope.oldEmail = ''; //for comparing new email entered by user after reg failure
             $scope.getOldEmail = function(){
@@ -98,7 +107,9 @@ angular.module('meetupApp')
                 $scope.auth.$createUser({
                     name : name,
                     email : email, 
-                    password: password
+                    password: password,
+                    employer : employer,
+                    title : title
 
                 }).then(function() { 
                         console.log('User creation successful');

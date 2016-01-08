@@ -11,8 +11,8 @@
         <input class="form-control" id="event-name" name="ename" type="text" placeholder="Event Name" ng-model="event.name" required autocomplete="name" autofocus>
         <p  class="help-block" ng-show="eForm.ename.$error.required &&  eForm.ename.$touched">Please enter a meeting name</p>
 
-      </label>
- </div>
+       </label>
+     </div>
 
       <label for="event-type"><span class="sr-only">Event Type</span>
         <input class="form-control" id="event-type" list="event" type="text" placeholder="Event Type" ng-model="event.type" autocomplete="name">
@@ -36,7 +36,7 @@
 
       <div class="form-group" ng-class="{ 'has-error' : eForm.estart.$invalid && eForm.estart.$touched}">	
       <label for="start-date"><span class="sr-only">Start Date And Time</span>
-        <input class="form-control" id="start-date" type="datetime-local" placeholder="mm/dd/yyyy, --:-- --" name="estart" ng-model="event.start" required>
+        <input class="form-control" id="start-date" type="datetime-local" placeholder="Start Date And Time" name="estart" ng-model="event.start" title="Start Date And Time" required>
         
         <p  class="help-block" ng-show="eForm.estart.$error.required && eForm.estart.$touched">Please add meeting start date</p>
       </label>
@@ -44,13 +44,13 @@
 
      <div class="form-group" ng-class="{ 'has-error' : eForm.end.$invalid && eForm.end.$touched}">	
       <label for="end-date"><span class="sr-only">End Date And Time</span>
-        <input class="form-control" id="end-date" type="datetime-local" placeholder="mm/dd/yyyy, --:-- --" name="end" ng-model="event.end" required >
+        <input class="form-control" id="end-date" type="datetime-local" placeholder="End Date And Time" name="end" ng-model="event.end"  title="End Date And Time" required >
          <p  class="help-block" ng-show="eForm.end.$error.required && eForm.end.$touched">Please add meeting end date and time</p>
       </label>
   </div>
 
-      <label for="guest-list"><span class="sr-only">Guest</span>
-        <input class="form-control" id="guest-list" type="text" placeholder="Guest 1, Guest2, Guest 3" ng-model="event.guests"
+      <label for="guest-list"><span class="sr-only">Guest List</span>
+        <input class="form-control" id="guest-list" type="text" placeholder="Guest 1, Guest2, Guest 3..." ng-model="event.guests"
         autocomplete="name" >
       </label>
 
