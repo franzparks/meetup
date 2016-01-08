@@ -49,7 +49,11 @@
       </label>
   </div>
 
-    
+      <label for="guest-list"><span class="sr-only">Guest</span>
+        <input class="form-control" id="guest-list" type="text" placeholder="Guest 1, Guest2, Guest 3" ng-model="event.guests"
+        autocomplete="name" >
+      </label>
+
       <label for="location"><span class="sr-only">Location</span>
         <input class="form-control" id="location" type="text" placeholder="123 Any Street" ng-model="event.location"
         autocomplete="shipping street-address" >
