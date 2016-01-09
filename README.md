@@ -24,22 +24,22 @@ Run `run grunt`
 
 ### Project Directory Layout
 
-```
-app/                    --> all of the source files for the application
-  scripts/              --> all app specific modules
-    controllers/              --> app controllers
-      login.js                --> module containing login controller, user data service and registration controller
-      main.js                 --> module containing the main controller, create event and get events controllers
-    app.js              --> main application module
-  index.html            --> app layout file (the main html template file of the app)
-  scripts/              --> all app specific styling sheets
-  views/                --> all app view templates
-    createEvent.html/         --> partial template with form for creating events
-    loggedout.html            --> partial template to display when user is logged out of app
-    login.html/               --> partial template with form for getting user input to log into app
-    main.html/                --> partial template for displaying upcoming events and serves as landing page
-    register.html/            --> partial template with form for getting user input to register users
-```
+
+> app/                    --> all of the source files for the application
+>  scripts/              --> all app specific modules
+>    controllers/              --> app controllers
+>      login.js                --> module containing login controller, user data service and registration controller
+>      main.js                 --> module containing the main controller, create event and get events controllers
+>    app.js              --> main application module
+>  index.html            --> app layout file (the main html template file of the app)
+>  scripts/              --> all app specific styling sheets
+>  views/                --> all app view templates
+>    createEvent.html/         --> partial template with form for creating events
+>    loggedout.html            --> partial template to display when user is logged out of app
+>    login.html/               --> partial template with form for getting user input to log into app
+>    main.html/                --> partial template for displaying upcoming events and serves as landing page
+>    register.html/            --> partial template with form for getting user input to register users
+
 
 
 ### Requirements
