@@ -24,7 +24,7 @@ Run `run grunt`
 
 ### Project Directory Layout
 
-
+```
 app/                    --> all of the source files for the application
   scripts/              --> all app specific modules
     controllers/              --> app controllers
@@ -39,7 +39,7 @@ app/                    --> all of the source files for the application
     login.html/               --> partial template with form for getting user input to log into app
     main.html/                --> partial template for displaying upcoming events and serves as landing page
     register.html/            --> partial template with form for getting user input to register users
-
+```
 
 
 ### Requirements
@@ -56,7 +56,7 @@ app/                    --> all of the source files for the application
 
 - Employer (An optional employer field)
 
--Job Title (An optional title job field)
+- Job Title (An optional title job field)
 
 ##### The login form includes the following fields:
 
