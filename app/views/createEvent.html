@@ -32,28 +32,33 @@
       </label>
      
 
-    <div class="form-group" ng-class="{ 'has-error' : eForm.estart.$invalid && eForm.estart.$touched}">	
+    <div class="form-group" ng-class="{ 'has-error' : eForm.estart.$invalid && eForm.estart.$touched 
+     || (eForm.estart.$invalid && (eForm.end.$touched || eForm.guests.$touched || eForm.loc.$touched || eForm.message.$touched))}">	
       <label for="start-date"><span class="sr-only">Start Date And Time</span>
       <input class="form-control" id="start-date" type="datetime-local" placeholder="Start Date And Time" name="estart" ng-model="event.start" title="Start Date And Time" required>
         
-      <p  class="help-block" ng-show="eForm.estart.$error.required && eForm.estart.$touched">Please add meeting start date and time</p>
+      <p  class="help-block" ng-show="eForm.estart.$error.required && eForm.estart.$touched 
+      || (eForm.estart.$invalid && (eForm.end.$touched || eForm.guests.$touched || eForm.loc.$touched || eForm.message.$touched))">Please add meeting start date and time</p>
       </label>
+  
     </div>
 
-    <div class="form-group" ng-class="{ 'has-error' : eForm.end.$invalid && eForm.end.$touched}">	
+    <div class="form-group" ng-class="{ 'has-error' : eForm.end.$invalid && eForm.end.$touched
+    || (eForm.end.$invalid && (eForm.guests.$touched || eForm.loc.$touched || eForm.message.$touched))}">	
       <label for="end-date"><span class="sr-only">End Date And Time</span>
         <input class="form-control" id="end-date" type="datetime-local" placeholder="End Date And Time" name="end" ng-model="event.end"  title="End Date And Time" required >
-         <p  class="help-block" ng-show="eForm.end.$error.required && eForm.end.$touched">Please add meeting end date and time</p>
+         <p  class="help-block" ng-show="eForm.end.$error.required && eForm.end.$touched
+         || (eForm.end.$invalid && (eForm.guests.$touched || eForm.loc.$touched || eForm.message.$touched))">Please add meeting end date and time</p>
       </label>
     </div>
 
       <label for="guest-list"><span class="sr-only">Guest List</span>
-        <input class="form-control" id="guest-list" type="text" placeholder="Guest 1, Guest2, Guest 3 ..." ng-model="event.guests"
+        <input class="form-control" id="guest-list" type="text" placeholder="Guest 1, Guest2, Guest 3 ..." ng-model="event.guests" name="guests"
         autocomplete="name" >
       </label>
 
       <label for="location"><span class="sr-only">Location</span>   
-        <input class="form-control" id="location" type="text" placeholder="123, Any Street, Anywhere" ng-model="event.location"
+        <input class="form-control" id="location" type="text" placeholder="123, Any Street, Anywhere" ng-model="event.location" name="loc"
         autocomplete="shipping street-address" >
       </label>
      
@@ -62,11 +67,12 @@
       </label>
 
       <label for="message"><span class="sr-only">Message To Attendees</span>
-        <input class="form-control" id="message" type="text" placeholder="Come prepared!" max="50" ng-model="event.additionalMsg" ng-show="getAdditionalMessage()">
+        <input class="form-control" id="message" name="message" type="text" placeholder="Come prepared!" max="50" ng-model="event.additionalMsg" ng-show="getAdditionalMessage()">
       </label>
 
-      <input type="button" value="Create Event" class="btn btn-primary" ng-disabled="!event.name " ng-click="createEvent(event)"/>
+      <input type="button" name="btn" value="Create Event" class="btn btn-primary" ng-disabled="eForm.ename.$invalid || eForm.estart.$invalid || eForm.end.$invalid" ng-click="createEvent(event)"/>
 
+       
       </form>
      
       </div>  

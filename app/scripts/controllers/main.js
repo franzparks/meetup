@@ -46,7 +46,7 @@ angular.module('meetupApp')
 
     
 })
-  .controller('CreateEventCtrl', function ($scope,$location,$filter,UserDataService,Ref) {
+  .controller('CreateEventCtrl', function ($scope,$location,$filter,UserDataService,RefArr) {
 
    var geocoder = new google.maps.Geocoder();
 
@@ -62,10 +62,9 @@ angular.module('meetupApp')
    };
 
    $scope.createEvent = function (event) {
-      // Get a database reference to the events
-       //var ref = new Firebase('https://franzmeetapp.firebaseio.com/events');
-        
-        /*if (angular.isDefined($scope.event.start)) {
+     
+     //convert dates
+        if (angular.isDefined($scope.event.start)) {
             var startDate = $scope.event.start;
             $scope.event.start = startDate.getTime();
             console.log(startDate.getTime());
@@ -74,13 +73,13 @@ angular.module('meetupApp')
         if (angular.isDefined($scope.event.end)) {
             var endDate = $scope.event.end;
             $scope.event.end = endDate.getTime();
-        }*/
+        }
 
         if (angular.isUndefined($scope.event.location)) {
           $scope.event.location = "None";
         }
 
-        Ref.push(event);
+        RefArr.push(event);
         //redirect to home page after push
         $location.path('/');
         }
@@ -113,7 +112,7 @@ angular.module('meetupApp')
                  for (var b=0;b<results[0].address_components[i].types.length;b++) {
                   //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
                     if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
-                      //this is the object you are looking for
+                      //this is the object  we are looking for
                       $scope.city = results[0].address_components[i];
                       break;
                     }
@@ -132,14 +131,14 @@ angular.module('meetupApp')
         }
     }
 
-    $scope.getLocation();
+    $scope.getLocation(); //initialize location search
   
 })
 
 .controller('GetEventsCtrl', function ($scope,$filter, UserDataService,RefArr) {
 
    $scope.events = []; 
-   
+
   // Attach an asynchronous callback to read the data at the events reference
   RefArr.on("value", function(snapshot) {
     var data =   snapshot.val();
