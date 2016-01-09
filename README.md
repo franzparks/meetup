@@ -76,11 +76,12 @@ No other fields have been added to keep the form and the registration process si
 
 - Event End (A required field for event end date and time).
 
+- Guest List (An optional field to add guests to the event)
+
 - Location  (An optional field for the location of the event).
 
 - Additional Message  (An optional field for the event creator to add any additional information for the event).
 
-I decided not to add an option for adding a guest list in this form because I think it would be better to have that functionality in a different feature where users are allowed to select an event to attend and then get added to that event by their own request
 
 #### 3. Events Display.
 
@@ -102,6 +103,9 @@ I decided not to add an option for adding a guest list in this form because I th
 [password]: https://www.firebase.com/docs/web/guide/login/password.html
 
 [date]: https://docs.angularjs.org/api/ng/filter/date
+
+[geo-loc]: http://stackoverflow.com/questions/6797569/get-city-name-using-geolocation
+[geo-loc1]: http://stackoverflow.com/questions/30613442/angularjs-geolocation-data-update
 
 [filtering]: http://stackoverflow.com/questions/16523076/angular-template-default-value-if-binding-null-undefined-with-filter
 
