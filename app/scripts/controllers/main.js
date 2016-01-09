@@ -13,9 +13,23 @@
  * Controller of the meetupApp
  
  */
+
 angular.module('meetupApp')
- 
-  .controller('MainCtrl', function ($scope,UserDataService,$location) {
+
+.factory("Ref", ["$firebase",
+  function($firebase) {
+    var ref = new Firebase("https://franzmeetapp.firebaseio.com");
+    return ref;
+  }
+])
+
+.factory("RefArr", ["$firebaseArray",
+  function($firebaseArray) {
+    var ref = new Firebase("https://franzmeetapp.firebaseio.com/events");
+    return ref;
+  }
+])
+   .controller('MainCtrl', function ($scope,UserDataService,$location) {
 
     $scope.username = UserDataService.getUser();
 
@@ -32,15 +46,9 @@ angular.module('meetupApp')
 
     
 })
-  .controller('CreateEventCtrl', function ($scope,$location,$filter,UserDataService) {
+  .controller('CreateEventCtrl', function ($scope,$location,$filter,UserDataService,Ref) {
 
-
-  var geocoder = new google.maps.Geocoder();
-  $scope.geoLoc = ''; 
-
-   $scope.getLoc = function(){ 
-        return $scope.geoLoc;
-  };
+   var geocoder = new google.maps.Geocoder();
 
    $scope.hasAdditionalMsg = false;
    //$scope.events = []; //Now using firebase to store events
@@ -55,9 +63,9 @@ angular.module('meetupApp')
 
    $scope.createEvent = function (event) {
       // Get a database reference to the events
-       var ref = new Firebase('https://franzmeetapp.firebaseio.com/events');
+       //var ref = new Firebase('https://franzmeetapp.firebaseio.com/events');
         
-        if (angular.isDefined($scope.event.start)) {
+        /*if (angular.isDefined($scope.event.start)) {
             var startDate = $scope.event.start;
             $scope.event.start = startDate.getTime();
             console.log(startDate.getTime());
@@ -66,13 +74,13 @@ angular.module('meetupApp')
         if (angular.isDefined($scope.event.end)) {
             var endDate = $scope.event.end;
             $scope.event.end = endDate.getTime();
-        }
+        }*/
 
         if (angular.isUndefined($scope.event.location)) {
-          $scope.event.location = $scope.geoLoc;
+          $scope.event.location = "None";
         }
 
-        ref.push(event);
+        Ref.push(event);
         //redirect to home page after push
         $location.path('/');
         }
@@ -97,7 +105,9 @@ angular.module('meetupApp')
             //console.log("more results",results)
           if (results[1]) {
            //formatted address
-          $scope.geoLoc = results[0].formatted_address;
+          //$scope.geoLoc = results[0].formatted_address;
+          $scope.event.location = results[0].formatted_address;
+
           //find country name
              for (var i=0; i<results[0].address_components.length; i++) {
                  for (var b=0;b<results[0].address_components[i].types.length;b++) {
@@ -126,14 +136,12 @@ angular.module('meetupApp')
   
 })
 
-.controller('GetEventsCtrl', function ($scope,$filter, UserDataService,$firebaseArray) {
+.controller('GetEventsCtrl', function ($scope,$filter, UserDataService,RefArr) {
 
    $scope.events = []; 
    
-   // Get a database reference to the events
-   var ref = new Firebase("https://franzmeetapp.firebaseio.com/events");
   // Attach an asynchronous callback to read the data at the events reference
-  ref.on("value", function(snapshot) {
+  RefArr.on("value", function(snapshot) {
     var data =   snapshot.val();
     console.log(data);
     $scope.events = data;

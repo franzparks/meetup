@@ -36,7 +36,6 @@ angular.module('meetupApp')
         }
     };
 })
-
   .controller('LoginCtrl', function ($scope,$location, Auth, UserDataService) {
    
     $scope.loginError = false;
