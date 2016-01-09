@@ -80,7 +80,7 @@ app/                    --> all of the source files for the application
 
 - Guest List (An optional field to add guests to the event)
 
-- Location  (An optional field for the location of the event. This field gets auto field with users current location).
+- Location  (An optional field for the location of the event. This field gets auto filled with user's current location).
 
 - Additional Message  (An optional field for the event creator to add any additional information for the event).
 
