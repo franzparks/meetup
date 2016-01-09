@@ -54,7 +54,9 @@ app/                    --> all of the source files for the application
 
 - Password (with character and length requirements)
 
-No other fields have been added to keep the form and the registration process simple 
+- Employer (An optional employer field)
+
+-Job Title (An optional title job field)
 
 ##### The login form includes the following fields:
 
@@ -78,7 +80,7 @@ No other fields have been added to keep the form and the registration process si
 
 - Guest List (An optional field to add guests to the event)
 
-- Location  (An optional field for the location of the event).
+- Location  (An optional field for the location of the event. This field gets auto field with users current location).
 
 - Additional Message  (An optional field for the event creator to add any additional information for the event).
 

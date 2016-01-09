@@ -1,48 +1,46 @@
 <div class="display-section" ng-controller="RegisterCtrl">
 
-            <h2>Register</h2>
+    <h2>Register</h2>
 
-  <form class="form-signin" name="regForm"  novalidate>
-
+<form class="form-signin" name="regForm"  novalidate>
     <div class="form-group" >
-    <label for="name">Name</label>
+       <label for="name">Name</label>
         <input type="text" id="name" name="name" class="form-control" ng-model="user.name" autocomplete="name" autofocus>
     </div>
     
     <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid  || getRegError() }" >
-      <label for="email">Email</label>
+        <label for="email">Email</label>
         <input type="email" id="email" name="email" class="form-control" ng-model="user.email" autocomplete="email">
         <p class="help-block" ng-show="regForm.email.$invalid" >Enter a valid email.</p>
         <div ng-hide="regForm.password.$error.minlength">
         <p class="help-block" ng-show="getRegError() && regForm.email.$viewValue === getOldEmail()" >{{regErrorMessage}}</p>
-       </div>
+        </div>
 
     </div>
 
-
     <div class="form-group" ng-class="{ 'has-error' : regForm.password.$invalid  }">
-     <label for="password">Password</label>
-     <input type="password" id="password" name="password" class="form-control" ng-model="user.password" ng-minlength="8" >
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" ng-model="user.password" ng-minlength="8" >
         <p  class="help-block" ng-show="regForm.password.$error.minlength">Min password length is 8 characters.</p>
     </div>
 
-     <label for="additional-info"><span>Optional Biographical Information: </span>
+        <label for="additional-info"><span>Optional Biographical Information: </span>
         <input id="additional-info" type="checkbox" ng-model="moreInfo">
-     </label>
+        </label>
 
     <div class="form-group" ng-class="{ 'has-error' : regForm.employer.$invalid }">
         <label for="employer"><span class="sr-only">Employer</span>
         <input class="form-control" id="employer" name="employer" type="text" placeholder="Employer" ng-maxlength="30" ng-model="user.employer" ng-show="getMoreInfo()">
         <p  class="help-block" ng-show="regForm.employer.$error.maxlength">Max employer length is 30 characters</p>
-      </label>
-     </div> 
+        </label>
+    </div> 
 
-<div class="form-group" ng-class="{ 'has-error' : regForm.title.$invalid }">
-    <label for="job-title"><span class="sr-only">Job Title</span>
-    <input class="form-control" id="job-title" name="title" type="text" placeholder="Job Title" ng-maxlength="30" ng-model="user.title" ng-show="getMoreInfo()">
-    <p  class="help-block" ng-show="regForm.title.$error.maxlength">Max job title length is 30 characters</p>
-   </label>
-</div>
+    <div class="form-group" ng-class="{ 'has-error' : regForm.title.$invalid }">
+        <label for="job-title"><span class="sr-only">Job Title</span>
+        <input class="form-control" id="job-title" name="title" type="text" placeholder="Job Title" ng-maxlength="30" ng-model="user.title" ng-show="getMoreInfo()">
+        <p  class="help-block" ng-show="regForm.title.$error.maxlength">Max job title length is 30 characters</p>
+       </label>
+    </div>
     <a href="#/login" ng-show="getRegError()">Login</a>
 
     <button type="button" class="btn btn-lg btn-primary btn-block" ng-disabled="!user.email || !user.password" ng-click="signUp()">Register</button>
